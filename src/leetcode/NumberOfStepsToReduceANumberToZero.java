@@ -22,4 +22,25 @@ public class NumberOfStepsToReduceANumberToZero {
 
         return steps;
     }
+
+    public int NumberOfStepsBitManipulation(int num) {
+
+        if (num == 0) {
+            return 0;
+        }
+
+        int steps = 0;
+
+        while (num > 0) {
+            if ((num & 1) == 0) {
+                num >>= 1;
+            } else {
+                num--;
+            }
+
+             steps++;
+        }
+
+        return steps;
+    }
 }
