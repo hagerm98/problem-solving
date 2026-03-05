@@ -156,3 +156,29 @@ When committing a LeetCode problem solution, use the following commit message pa
 - Only stage and commit the file(s) related to that specific problem — **never bundle unrelated files**
 - Always confirm the commit message with me before committing and pushing
 
+### Pre-Commit Validation Checklist
+
+> **These checks MUST be performed before every commit. No exceptions.**
+
+Before staging and committing any file, you **must** complete the following checks:
+
+1. **Verify the file has content** — Read the file before staging it. If the file is empty or contains only a package declaration, **do not commit**. Alert me that the file appears to be empty.
+2. **Verify the file is saved** — Ensure the file has been saved in the editor before staging. Unsaved files will be staged in their last saved state, which may be empty or outdated.
+3. **Inspect the staging output** — After running `git add`, run `git diff --cached --stat` to confirm the staged file shows a reasonable number of insertions. If it shows `0 insertions(+)` or the file is not listed, **stop and investigate** before committing.
+4. **Review the commit output** — After committing, check the commit summary. If it reports `0 insertions(+), 0 deletions(-)` for a new file, or the change stats don't look right, **immediately investigate** — do not push.
+5. **Never push blindly** — Always verify the commit output looks correct before pushing. If anything looks suspicious (empty file, wrong file, unexpected stats), stop and inform me.
+
+### Post-Push Verification
+
+After pushing, briefly confirm:
+- The push output shows the expected objects were transferred
+- The commit message in the output matches what was intended
+
+### Common Mistakes to Avoid
+- ❌ **Don't stage a file before it's saved** — this is the #1 cause of empty file commits
+- ❌ **Don't skip the diff check** — always run `git diff --cached --stat` after staging
+- ❌ **Don't ignore warning signs** — if `git commit` reports 0 insertions for a new file, something is wrong
+- ❌ **Don't push a bad commit to "fix it later"** — fix it before pushing
+- ✅ **Do read the file content** before staging to confirm it matches what's expected
+- ✅ **Do pause and alert me** if anything looks off — it's better to ask than to push a broken commit
+
